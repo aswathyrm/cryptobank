@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+jQuery(function($) {
+    var locations = {
+        'Kozhikode': ['Koyilandy', 'Thamarassery', 'Mananchira'],
+        'Kottayam': ['Changanassery','Pala','Erattupetta'],
+        'Thiruvananthapuram': ['Chirayinkeezhu','Neyyattinkara','Nedumangadu'],
+        'Kochi': ['Pachalam','Thevara','Ravipuram'],
+        'Kollam': ['Shakthikulangara','Thrikkadavoor','Thrikkaruva'],
+    }
+
+    var $locations = $('#location');
+    $('#country').change(function () {
+        var country = $(this).val(), lcns = locations[country] || [];
+
+        var html = $.map(lcns, function(lcn){
+            return '<option value="' + lcn + '">' + lcn + '</option>'
+        }).join('');
+        $locations.html(html)
+    });
+});
+</script>
+
+      <meta charset="utf-8">
+      <title>Popup Login Form </title>
+      <link rel="stylesheet" href="{% static 'css/new_style.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+
+      <div class="center">
+         <input type="checkbox" id="show">
+         <label for="show" class="show-btn">View Form</label>
+         <div class="container">
+            <label for="show" class="close-btn fas fa-times" title="close"></label>
+            <div class="text">
+               Form
+            </div>
+             <div class="row">
+                 <div class="column">
+            <form action="http://127.0.0.1:8000/">
+               <div class="data">
+                  <label>Name</label>
+                  <input type="text" required>
+               </div>
+               <div class="data">
+                  <label>DOB</label>
+                  <input type="text" required>
+               </div>
+               <div class="data">
+                  <label>Age</label>
+                  <input type="text" required>
+               </div>
+               <div class="data">
+                  <label>Gender</label>
+                  <input type="text" required>
+               </div>
+               <div class="data">
+                  <label>Phone Number</label>
+                  <input type="text" required>
+               </div>
+               <div class="data">
+                  <label>Mail ID</label>
+                  <input type="text" required>
+               </div>
+               <div class="data">
+                  <label>Address</label>
+                  <input type="text" required>
+               </div>
+</div>
+                 <div class="column">
+<label class="page1">District</label>
+<div class="tooltips" title="Please select the country that the customer will primarily be served from">
+    <select id="country" name="country" placeholder="Phantasyland">
+        <option></option>
+        <option>Kozhikode</option>
+        <option>Kottayam</option>
+        <option>Thiruvananthapuram</option>
+        <option>Kochi</option>
+        <option>Kollam</option>
+
+    </select>
+</div>
+<br>
+
+<label class="page1">Branch</label>
+<div class="tooltips" title="Please select the city that the customer is primarily to be served from.">
+    <select id="location" name="location" placeholder="Anycity"></select>
+</div>
+
+
+
+                <label>Account type</label>
+
+<select name="account" id="account">
+  <option value="volvo">Savings account</option>
+  <option value="saab">Salary account</option>
+  <option value="mercedes">Fixed deposit account</option>
+  <option value="audi">NRI account</option>
+</select><br><br>
+
+      <input class="checkbox" type="checkbox" name="terms1" id="terms1" style="display: inline-block;"><label for="terms1"> Credit Card</label><br>
+      <input class="checkbox" type="checkbox" name="terms2" id="terms2" style="display: inline-block;"><label for="terms2"> Debit Card</label><br>
+      <input class="checkbox" type="checkbox" name="terms3" id="terms3" style="display: inline-block;"><label for="terms3"> Cheque Book</label><br>
+      <input class="checkbox" type="checkbox" name="terms4" id="terms4" style="display: inline-block;"><label for="terms4"> Pass Book</label><br>
+      <input type="submit"  style="text-align: center"><br>
+      <button type="submit" style="text-align: center">Logout</button>
+                 </div>
+                     </div>
+
+
+            </form>
+         </div>
+      </div>
+
+   </body>
+</html>
